@@ -93,6 +93,7 @@ function joinRoom() {
                 setRemoteStream(stream);
             })
             currentPeer = call;
+            debugger
         }, (err) => {
             console.log(err)
         })
