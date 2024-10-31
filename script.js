@@ -86,7 +86,7 @@ function joinRoom() {
         getUserMedia({ video: true, audio: true }, (stream) => {
             local_stream = stream;
             console.log(local_stream);
-            setLocalStream(local_stream)
+            setRemoteStream(local_stream)
             notify("Joining peer")
             let call = peer.call(room_id, stream)
             call.on('stream', (stream) => {
