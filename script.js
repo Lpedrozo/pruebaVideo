@@ -92,4 +92,5 @@ function joinRoom() {
             console.log(err);
         });
     }
+   }
 
