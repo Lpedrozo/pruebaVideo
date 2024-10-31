@@ -90,7 +90,7 @@ function joinRoom() {
             notify("Joining peer")
             let call = peer.call(room_id, stream)
             call.on('stream', (stream) => {
-                setRemoteStream(stream);
+                setLocalStream(stream);
             })
             currentPeer = call;
             debugger
