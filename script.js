@@ -79,15 +79,17 @@ function joinRoom() {
             local_stream = stream;
             setLocalStream(local_stream)
             notify("Joining peer")
-            let call = peer.call(room_id, stream)
-            call.on('stream', (stream) => {
-                setRemoteStream(stream);
-            })
-            currentPeer = call;
+            local_stream.play().then(() => {
+                let call = peer.call(room_id, stream);
+                call.on('stream', (stream) => {
+                    setRemoteStream(stream);
+                });
+                currentPeer = call;
+            }).catch((err) => {
+                console.error("Error al reproducir el flujo local:", err);
+            });
         }, (err) => {
-            console.log(err)
-        })
-
-    })
-}
+            console.log(err);
+        });
+    }
 
