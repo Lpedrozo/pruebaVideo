@@ -79,11 +79,10 @@ function joinRoom() {
 
     peer.on('open', (id) => {
         console.log("Connected with Id: " + id);
-        getUserMedia({ video: true, audio: true }, (stream) => {
+        navigator.getUserMedia({ video: true, audio: true }, (stream) => {
             local_stream = stream;
             setLocalStream(local_stream);
-            notify("Joining peer");
-
+            notify("Uniéndote a la sala");
 
             local_stream.play().then(() => {
                 let call = peer.call(room_id, stream);
@@ -92,10 +91,10 @@ function joinRoom() {
                 });
                 currentPeer = call;
             }).catch((err) => {
-                console.error("Error playing local stream:", err);
+                console.error("Error al reproducir el flujo local:", err);
             });
         }, (err) => {
-            console.log(err);
+            console.error("Error al acceder a los dispositivos de medios:", err);
         });
     });
 }
