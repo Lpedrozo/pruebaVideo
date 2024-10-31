@@ -49,9 +49,14 @@ function setLocalStream(stream) {
 }
 function setRemoteStream(stream) {
 
-    let videoRemote = document.getElementById("remote-video");
+    let videoRemote = document.getElementById("local-video");
     videoRemote.srcObject = stream;
-    videoRemote.play();
+    videoRemote.muted = true;
+    videoRemote.addEventListener('canplay',
+        () => {
+            videoRemote.play();
+        });
+    console.log(stream)
 }
 
 function hideModal() {

@@ -23,7 +23,7 @@ body{
     z-index: 9999;
     position: absolute;
     left: 50%;
-    top: 70;
+    top: 70px;
     margin-left: -150px;
     padding: 5px;
     color: #222428;
@@ -54,22 +54,22 @@ button{
     padding: 5px;
 }
 
-#remote-video{
-    top: 0;
-    height: 100%;
-    width: 100%;
-    left: 0;
+#remote-video {
+    top: 0px;
+    height: 300px;
+    width: 300px;
+    left: 15px;
     background-color: #f1f1f1;
     position: absolute;
 }
 
 #local-video{
-    top: 60;
-    width: 300;
+    top: 60px;
+    width: 300px;
     object-fit: cover;
-    height: 300;
+    height: 300px;
     z-index: 1;
-    right: 15;
+    right: 15px;
     background-color: #d7d8da;
     position: absolute;
 }
