@@ -44,6 +44,7 @@ function setLocalStream(stream) {
         () => {
             video.play();
         });
+        debugger
     console.log(stream)
 }
 function setRemoteStream(stream) {
@@ -55,6 +56,7 @@ function setRemoteStream(stream) {
             videoRemote.play();
         });
     console.log(stream)
+    debugger
 }
 
 function hideModal() {
