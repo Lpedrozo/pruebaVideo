@@ -62,40 +62,30 @@ function notify(msg) {
         notification.hidden = true;
     }, 3000)
 }
-
 function joinRoom() {
-    console.log("Joining Room");
+    console.log("Joining Room")
     let room = document.getElementById("room-input").value;
-
-    if (room === " " || room === "") {
-        alert("Please enter a room number");
-    return;
+    if (room == " " || room == "") {
+        alert("Please enter room number")
+        return;
     }
-
     room_id = PRE + room + SUF;
-    hideModal();
-
-    peer = new Peer(); // Create a new Peer object
-
+    hideModal()
+    peer = new Peer()
     peer.on('open', (id) => {
-        console.log("Connected with Id: " + id);
-        navigator.getUserMedia({ video: true, audio: true }, (stream) => {
+        console.log("Connected with Id: " + id)
+        getUserMedia({ video: true, audio: true }, (stream) => {
             local_stream = stream;
-            setLocalStream(local_stream);
-            notify("Uniéndote a la sala");
-
-            local_stream.play().then(() => {
-                let call = peer.call(room_id, stream);
-                call.on('stream', (stream) => {
-                    setRemoteStream(stream);
-                });
-                currentPeer = call;
-            }).catch((err) => {
-                console.error("Error al reproducir el flujo local:", err);
-            });
+            setLocalStream(local_stream)
+            notify("Joining peer")
+            let call = peer.call(room_id, stream)
+            call.on('stream', (stream) => {
+                setRemoteStream(stream);
+            })
+            currentPeer = call;
         }, (err) => {
-            console.error("Error al acceder a los dispositivos de medios:", err);
-        });
-    });
+            console.log(err)
+        })
+    })
 }
    
