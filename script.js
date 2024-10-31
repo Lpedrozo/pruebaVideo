@@ -64,21 +64,27 @@ function notify(msg) {
 }
 
 function joinRoom() {
-    console.log("Joining Room")
+    console.log("Joining Room");
     let room = document.getElementById("room-input").value;
-    if (room == " " || room == "") {
-        alert("Please enter room number")
-        return;
+
+    if (room === " " || room === "") {
+        alert("Please enter a room number");
+    return;
     }
+
     room_id = PRE + room + SUF;
-    hideModal()
-    peer = new Peer()
+    hideModal();
+
+    peer = new Peer(); // Create a new Peer object
+
     peer.on('open', (id) => {
-        console.log("Connected with Id: " + id)
+        console.log("Connected with Id: " + id);
         getUserMedia({ video: true, audio: true }, (stream) => {
             local_stream = stream;
-            setLocalStream(local_stream)
-            notify("Joining peer")
+            setLocalStream(local_stream);
+            notify("Joining peer");
+
+
             local_stream.play().then(() => {
                 let call = peer.call(room_id, stream);
                 call.on('stream', (stream) => {
@@ -86,11 +92,11 @@ function joinRoom() {
                 });
                 currentPeer = call;
             }).catch((err) => {
-                console.error("Error al reproducir el flujo local:", err);
+                console.error("Error playing local stream:", err);
             });
         }, (err) => {
             console.log(err);
         });
-    }
-   }
-
+    });
+}
+   
