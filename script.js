@@ -49,7 +49,7 @@ function setLocalStream(stream) {
 }
 function setRemoteStream(stream) {
 
-    let videoRemote = document.getElementById("local-video");
+    let videoRemote = document.getElementById("remote-video");
     videoRemote.srcObject = stream;
     videoRemote.muted = true;
     videoRemote.addEventListener('canplay',
